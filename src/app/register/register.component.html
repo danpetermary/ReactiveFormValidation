@@ -1,0 +1,31 @@
+<p>register works!</p>
+
+<form #signupform="ngForm" (ngSubmit)="mysign(signupform)">
+    <div class="form-group">
+      <label for="exampleInputEmail1">Email address</label>
+      <input type="email" matInput class="form-control"  name="email" required placeholder="Enter email" [(ngModel)]="userobj.email" minlength="6" #eml="ngModel">
+      <small *ngIf="eml.invalid"> email id is not valid</small>
+    </div>
+    <div class="form-group">
+      <label for="exampleInputPassword1">Password</label>
+      <input type="password" matInput class="form-control" name="password" 
+        minlength=6 placeholder="Password" [(ngModel)]="userobj.password" #pwd="ngModel">
+      <small *ngIf="pwd.minlength"> password length should be 6</small>
+    </div>
+    <div class="form-group form-check">
+      <input type="checkbox" class="form-check-input" name="terms" [(ngModel)]="userobj.terms" >
+      <label class="form-check-label" for="exampleCheck1">Check me out</label>
+    </div>
+
+    <div class="form-group">
+        <label for="exampleFormControlSelect1">Example select</label>
+        <select class="form-control" [(ngModel)]="userobj.course" name="course" >
+          <option *ngFor="let fruit of Fruits">{{fruit}}</option>
+           
+        </select>
+      </div>
+    
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+  
+  {{signupform.value}}

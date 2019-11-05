@@ -1,0 +1,20 @@
+
+<!-- angular reactive -->
+<p>login works!</p>
+<form [formGroup]="loginform" class="login" (ngSubmit)="validate(loginform)">
+    
+        <mat-form-field>
+          
+          <input matInput placeholder="email" formControlName="email">
+          <mat-error *ngIf="loginform.get('email')?.invalid"> 
+            Required email
+          </mat-error>
+        </mat-form-field>
+      
+        <mat-form-field>
+            <input type="password" matInput placeholder="enter password" formControlName="password">
+          </mat-form-field>
+       
+          <button mat-button [disabled]="loginform.invalid">Login</button>
+          
+</form>
